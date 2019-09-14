@@ -14,7 +14,7 @@ homeassistant:
   time_zone: Europe/Rome
 
 http:
-  base_url: https://elia.cloud:8234
+  base_url: https://!secret base_url:8234
   server_port: 8234
   ssl_certificate: /etc/letsencrypt/live/elia.cloud/fullchain.pem
   ssl_key: /etc/letsencrypt/live/elia.cloud/privkey.pem
