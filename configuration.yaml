@@ -22,6 +22,9 @@ http:
     - https://elia.cloud
   ip_ban_enabled: true
   login_attempts_threshold: 5
+  
+lovelace:
+  mode: yaml
 
 # Notifications
 notify:
@@ -103,6 +106,8 @@ cover:
   - platform: mqtt
     name: "Cancello"
     command_topic: "cmnd/sf-cancello/power"
-    state_topic: "stat/sf-cancello/POWER"
+    state_topic: "stat/stato-cancello/POWER2"
     payload_open: "ON"
     payload_close: "ON"
+    state_closed: "ON"
+    state_open: "OFF"
