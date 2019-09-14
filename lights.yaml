@@ -1,0 +1,75 @@
+- platform: mqtt
+  name: "Bagno Blu"
+  command_topic: "cmnd/sf-bagno-blu/power"
+  state_topic: "stat/sf-bagno-blu/POWER"
+
+- platform: mqtt
+  name: "Bagno Dietro"
+  state_topic: "shellies/shelly1-59E86D/relay/0"
+  command_topic: "shellies/shelly1-59E86D/relay/0/command"
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Camera di Ale"
+  command_topic: "cmnd/sf-cam-ale-sotto/power"
+  state_topic: "stat/sf-cam-ale-sotto/POWER"
+    
+- platform: mqtt
+  name: "Camerette Est"
+  state_topic: "shellies/shelly1-93ACD8/relay/0"
+  command_topic: "shellies/shelly1-93ACD8/relay/0/command"
+  payload_on: "on"
+  payload_off: "off"
+    
+- platform: mqtt
+  name: "Camera di Pier"
+  command_topic: "cmnd/sf-cam-pier-sotto/power"
+  state_topic: "stat/sf-cam-pier-sotto/POWER"
+
+- platform: mqtt
+  name: "Corridoio"
+  state_topic: "shellies/shelly1-22FC35/relay/0"
+  command_topic: "shellies/shelly1-22FC35/relay/0/command"
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Cucina"
+  state_topic: "shellies/shelly1-22F672/relay/0"
+  command_topic: "shellies/shelly1-22F672/relay/0/command"
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Garage Ovest"
+  state_topic: "shellies/shelly1-2471E9/relay/0"
+  command_topic: "shellies/shelly1-2471E9/relay/0/command"
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Ingresso"
+  state_topic: "shellies/shelly1-59E733/relay/0"
+  command_topic: "shellies/shelly1-59E733/relay/0/command"
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Soggiorno Sud"
+  state_topic: "shellies/shelly1-22F9AA/relay/0"
+  command_topic: "shellies/shelly1-22F9AA/relay/0/command"
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Soggiorno Nord"
+  state_topic: "shellies/shelly1-22F673/relay/0"
+  command_topic: "shellies/shelly1-22F673/relay/0/command"
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Scrivania di Pier"
+  command_topic: "cmnd/sf-lamp-scriv-pier/power"
+  state_topic: "stat/sf-lamp-scriv-pier/POWER"

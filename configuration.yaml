@@ -1,0 +1,108 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+homeassistant:
+  name: Casa
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: !secret home_elevation
+  unit_system: metric
+  time_zone: Europe/Rome
+
+http:
+  base_url: https://elia.cloud:8234
+  server_port: 8234
+  ssl_certificate: /etc/letsencrypt/live/elia.cloud/fullchain.pem
+  ssl_key: /etc/letsencrypt/live/elia.cloud/privkey.pem
+  cors_allowed_origins:
+    - https://elia.cloud
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+
+# Notifications
+notify:
+  - platform: html5
+    vapid_pub_key: !secret vapid_pub_key
+    vapid_prv_key: !secret vapid_prv_key
+    vapid_email: !secret pier_email
+  
+  - name: family_devices
+    platform: group
+    services: 
+      - service: ios_pierfrancesco_iphonex
+      - service: html5_pierfrancesco_chrome
+      - service: html5_elena_j3
+      - service: html5_benedetto_j3
+
+# Enable Apple HomeKit
+homekit:
+  filter:
+    include_domains:
+      - light
+      - cover
+      - media_player
+
+# Alexa
+alexa:
+  smart_home:
+    filter:
+      include_domains:
+        - light
+        - cover
+        - media_player
+
+# Google Home
+google_assistant:
+  project_id: !secret g-project-id
+  api_key: !secret g-api-key
+  exposed_domains:
+    - light
+    - cover
+    - media_player
+      
+# TV
+media_player:
+  - platform: samsungtv
+    name: TV del Soggiorno
+    host: !secret tv_ip
+    mac: !secret tv_mac
+    port: 8001
+
+#Lights
+light: !include lights.yaml
+
+# Anti-Theft
+binary_sensor:
+  - platform: rpi_gpio
+    ports:
+      17: Antifurto
+
+# Speedtest
+speedtestdotnet:
+  scan_interval:
+    hours: 4
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+sensor: !include sensor.yaml
+shell_command: !include shell_commands.yaml
+
+# Zones
+zone: !include zones.yaml
+
+# Cancello
+cover:
+  - platform: mqtt
+    name: "Cancello"
+    command_topic: "cmnd/sf-cancello/power"
+    state_topic: "stat/sf-cancello/POWER"
+    payload_open: "ON"
+    payload_close: "ON"

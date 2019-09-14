@@ -1,0 +1,1 @@
+chiamata: 'espeak -v mb-it3 -s 120 -p 50 -w /home/pi/voip-config/play.wav "{{messaggio}}" ; ( sleep 30; echo q ) | /home/pi/trunk/pjsip-apps/bin/pjsua-armv7l-unknown-linux-gnueabihf --config-file /home/pi/voip-config/pjsuaconf \ sip:{{numero}}@sip.cheapnet.it'

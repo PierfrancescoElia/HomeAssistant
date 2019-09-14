@@ -1,0 +1,34 @@
+# Casa
+- name: Home
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  radius: 40
+  icon: mdi:home-outline
+
+# Nonna
+- name: Nonna
+  latitude: 45.368964
+  longitude: 7.772640
+  radius: 40
+  icon: mdi:home-outline
+
+# Aretusa
+- name: Lavoro
+  latitude: 45.316725
+  longitude: 7.733826
+  radius: 20
+  icon: mdi:briefcase
+
+# Aldo Moro
+- name: Scuola
+  latitude: 45.330514
+  longitude: 7.721650
+  radius: 70
+  icon: mdi:school
+
+# Politecnico di Torino
+- name: Scuola
+  latitude: 45.062840
+  longitude: 7.661428
+  radius: 300
+  icon: mdi:school
