@@ -1,27 +1,13 @@
-- id: '1551361443867'
-  alias: Notifica Antifurto
+- id: '1569862394579'
+  alias: Update Available Notification
   trigger:
-  - entity_id: binary_sensor.antifurto
+  - entity_id: binary_sensor.updater
     from: 'off'
     platform: state
     to: 'on'
   condition: []
   action:
   - data:
-      message: Intrusione rilevata in casa.
-      title: Allarme!
-    service: notify.family_devices
-- id: '1553559417043'
-  alias: Accensione Luci Antifurto
-  trigger:
-  - entity_id: binary_sensor.antifurto
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition:
-  - after: sunset
-    condition: sun
-  action:
-  - data:
-      entity_id: group.all_lights
-    service: light.turn_on
+      message: Home Assistant {{ state_attr('binary_sensor.updater', 'newest_version')
+        }} is available.
+    service: notify.ios_pierfrancesco_iphonex

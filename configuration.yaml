@@ -14,17 +14,20 @@ homeassistant:
   time_zone: Europe/Rome
 
 http:
-  base_url: https://!secret base_url:8234
+  base_url: !secret base_url
   server_port: 8234
   ssl_certificate: /etc/letsencrypt/live/elia.cloud/fullchain.pem
   ssl_key: /etc/letsencrypt/live/elia.cloud/privkey.pem
   cors_allowed_origins:
     - https://elia.cloud
   ip_ban_enabled: true
-  login_attempts_threshold: 5
-  
+  login_attempts_threshold: 10
+
 lovelace:
   mode: yaml
+  
+hacs:
+  token: !secret hacs_token
 
 # Notifications
 notify:
@@ -40,6 +43,9 @@ notify:
       - service: html5_pierfrancesco_chrome
       - service: html5_elena_j3
       - service: html5_benedetto_j3
+  
+  - platform: alexa_media
+    name: alexa_media
 
 # Enable Apple HomeKit
 homekit:
@@ -57,6 +63,21 @@ alexa:
         - light
         - cover
         - media_player
+        
+alexa_media:
+  accounts:
+    - email: !secret pier_email
+      password: !secret amazon_psw
+      url: amazon.it
+      include_devices:
+        - Echo Plus
+        - Echo Input
+        - Echo Dot
+        
+# Automower
+automower:
+  username: !secret husqvarna_username
+  password: !secret husqvarna_password
 
 # Google Home
 google_assistant:
@@ -67,13 +88,19 @@ google_assistant:
     - cover
     - media_player
       
-# TV
+# Entertainment
 media_player:
+  # TV
   - platform: samsungtv
     name: TV del Soggiorno
     host: !secret tv_ip
     mac: !secret tv_mac
     port: 8001
+  
+  # Spotify
+  - platform: spotify
+    client_id: !secret spotify_id
+    client_secret: !secret spotify_secret
 
 #Lights
 light: !include lights.yaml

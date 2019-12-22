@@ -21,6 +21,11 @@
   command_topic: "shellies/shelly1-93ACD8/relay/0/command"
   payload_on: "on"
   payload_off: "off"
+  
+- platform: mqtt
+  name: "Camerette Sud"
+  command_topic: "cmnd/sf-camerette-sud/power"
+  state_topic: "stat/sf-camerette-sud/POWER"
     
 - platform: mqtt
   name: "Camera di Pier"

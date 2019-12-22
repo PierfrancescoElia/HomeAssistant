@@ -1,0 +1,63 @@
+title: Casa
+views:
+  - badges:
+      - device_tracker.life360_pierfrancesco_elia
+      - device_tracker.life360_alessandro_elia
+      - device_tracker.life360_elena_marta
+      - device_tracker.life360_benedetto_elia
+    cards:
+      - entities:
+          - light.camera_di_pier
+          - light.scrivania_di_pier
+          - light.cucina
+          - light.corridoio
+          - light.soggiorno_sud
+          - light.camera_di_ale
+          - light.soggiorno_nord
+          - light.bagno_blu
+          - light.camerette_est
+          - light.camerette_sud
+          - light.ingresso
+          - light.bagno_dietro
+          - light.garage_ovest
+        title: Luce
+        type: entities
+      - entities:
+          - cover.cancello
+        type: entities
+      - entity: weather.casa
+        type: weather-forecast
+      - type: gauge
+        min: 0
+        max: 100
+        severity:
+          green: 60
+          yellow: 30
+          red: 0
+        theme: default
+        entity: sensor.speedtest_download
+        name: Downlaod
+      - type: gauge
+        min: 0
+        max: 20
+        severity:
+          green: 18
+          yellow: 10
+          red: 0
+        theme: default
+        entity: sensor.speedtest_upload
+        name: Upload
+    path: default_view
+    title: Dashboard
+    
+  - cards:
+      - entities:
+        - media_player.soggiorno
+        - media_player.camera_di_pier
+        - media_player.bagno
+        type: entities
+      - type: media-control
+        entity: media_player.tv_del_soggiorno
+    title: Entertainment
+    
+
